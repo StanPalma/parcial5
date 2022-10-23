@@ -41,7 +41,7 @@ const aduanaGPut = async (req, res = response) => {
 
   const aduanas = await AduanaG.findByIdAndUpdate(id, resto);
 
-  res.json(alumno, aduanas);
+  res.json({ alumno, aduanas });
 };
 
 const aduanaGPatch = (req, res = response) => {
@@ -59,7 +59,7 @@ const aduanaGDelete = async (req, res = response) => {
 
   // const usuario = await Usuario.findByIdAndUpdate(id, { estado: false });
 
-  res.json(alumno, aduana);
+  res.json({ alumno, aduana });
 };
 
 module.exports = {

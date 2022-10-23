@@ -43,7 +43,7 @@ const aduanaCRPut = async (req, res = response) => {
 
   const aduanas = await AduanaCR.findByIdAndUpdate(id, resto);
 
-  res.json(alumno, aduanas);
+  res.json({ alumno, aduanas });
 };
 
 const aduanaCRPatch = (req, res = response) => {
@@ -61,7 +61,7 @@ const aduanaCRDelete = async (req, res = response) => {
 
   // const usuario = await Usuario.findByIdAndUpdate(id, { estado: false });
 
-  res.json(alumno, aduana);
+  res.json({ alumno, aduana });
 };
 module.exports = {
   aduanaCRGet,
