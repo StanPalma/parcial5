@@ -29,9 +29,8 @@ router.put(
 router.post(
   "/",
   [
-    // check('nombre', 'El nombre es obligatorio').not().isEmpty(),
-    // check('apellido', 'El apellido es obligatorio').not().isEmpty(),
-    // check('correo', 'El correo no es válido').isEmail(),
+    check('nombreproyecto', 'El nombre es obligatorio').not().isEmpty(),
+    check('monto', 'El monto es obligatorio').not().isEmpty(),
     check("codigo").custom(codigoExiste),
     validarCampos,
   ],

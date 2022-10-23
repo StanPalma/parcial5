@@ -2,7 +2,6 @@ const { response, request } = require("express");
 // const sms = require("../database/sms");
 
 const AduanaG = require("../models/aduanaG");
-const AduanaCR = require("../models/aduanaCR");
 const alumno = "Bladimir Stanley Palma Portillo";
 
 //TODO: ADUANGA GUATEMALA

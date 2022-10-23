@@ -1,7 +1,6 @@
 const { response, request } = require("express");
 // const sms = require("../database/sms");
 
-const AduanaG = require("../models/aduanaG");
 const AduanaCR = require("../models/aduanaCR");
 const alumno = "Bladimir Stanley Palma Portillo";
 
@@ -31,7 +30,6 @@ const aduanaCRPost = async (req, res = response) => {
 
   // Guardar en BD
   await aduanas.save();
-  // sms.sendSMS(productos.usuario); // Envia el mensaje que se registró
 
   res.json({
     alumno,

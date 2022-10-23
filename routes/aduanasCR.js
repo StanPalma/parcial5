@@ -4,7 +4,7 @@ const { check } = require('express-validator');
 
 
 const { validarCampos } = require('../middlewares/validar-campos');
-const { codigoExiste, existeAduanaPorId } = require('../helpers/db-validators');
+const { codigoCRExiste, existeCRAduanaPorId } = require('../helpers/db-validators');
 
 const { aduanaCRGet,
         aduanaCRPut,
@@ -24,16 +24,16 @@ router.put('/:id',[
 ],aduanaCRPut );
 
 router.post('/',[
-    // check('nombre', 'El nombre es obligatorio').not().isEmpty(),
-    // check('apellido', 'El apellido es obligatorio').not().isEmpty(),
-    // check('correo', 'El correo no es válido').isEmail(),
-    check('codigo').custom( codigoExiste ),
+    check('nombreproyecto', 'El nombre es obligatorio').not().isEmpty(),
+    check('paisqueejecuta', 'El pais que ejecuta es obligatorio').not().isEmpty(),
+    check('fechacierre', 'El correo no es válido').not().isEmpty(),
+    check('codigo').custom( codigoCRExiste ),
     validarCampos
 ], aduanaCRPost );
 
 router.delete('/:id',[
     check('id', 'No es un ID válido').isMongoId(),
-    check('id').custom( existeAduanaPorId ),
+    check('id').custom( existeCRAduanaPorId ),
     validarCampos
 ],aduanaCRDelete );
 
