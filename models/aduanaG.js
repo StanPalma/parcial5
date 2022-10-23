@@ -1,7 +1,7 @@
 
 const { Schema, model } = require('mongoose');
 
-const AduanaGSchema = Schema({
+const AduanaG = Schema({
     codigo: {
         type: String,
         required: [true, 'El código es obligatorio'],
@@ -22,9 +22,9 @@ const AduanaGSchema = Schema({
 
 
 
-AduanaGSchema.methods.toJSON = function() {
+AduanaG.methods.toJSON = function() {
     const { __v, ...aduana  } = this.toObject();
     return aduana;
 }
 
-module.exports = model( 'AduanaG', AduanaGSchema );
+module.exports = model( 'AduanaG', AduanaG );

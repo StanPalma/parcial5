@@ -4,39 +4,39 @@ const { check } = require('express-validator');
 
 
 const { validarCampos } = require('../middlewares/validar-campos');
-const { emailExiste, existeAduanaPorCodigo } = require('../helpers/db-validators');
+const { codigoExiste, existeAduanaPorId } = require('../helpers/db-validators');
 
-const { aduanaGGet,
-        aduanaGPut,
-        aduanaGPost,
-        aduanaGDelete,
-        aduanaGPatch } = require('../controllers/aduanas');
+const { aduanaCRGet,
+        aduanaCRPut,
+        aduanaCRPost,
+        aduanaCRDelete,
+        aduanaCRPatch } = require('../controllers/aduanasCR');
 
 const router = Router();
 
 
-router.get('/', aduanaGGet );
+router.get('/', aduanaCRGet );
 
 router.put('/:id',[
     check('id', 'No es un ID válido').isMongoId(),
     // check('id').custom( existeProductoPorId ),
     validarCampos
-],aduanaGPut );
+],aduanaCRPut );
 
 router.post('/',[
     // check('nombre', 'El nombre es obligatorio').not().isEmpty(),
     // check('apellido', 'El apellido es obligatorio').not().isEmpty(),
     // check('correo', 'El correo no es válido').isEmail(),
-    // check('correo').custom( emailExiste ),
-    // validarCampos
-], aduanaGPost );
+    check('codigo').custom( codigoExiste ),
+    validarCampos
+], aduanaCRPost );
 
 router.delete('/:id',[
     check('id', 'No es un ID válido').isMongoId(),
-    // check('id').custom( existeProductoPorId ),
+    check('id').custom( existeAduanaPorId ),
     validarCampos
-],aduanaGDelete );
+],aduanaCRDelete );
 
-router.patch('/', aduanaGPatch );
+router.patch('/', aduanaCRPatch );
 
 module.exports = router;

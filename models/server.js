@@ -41,7 +41,7 @@ class Server {
 
     routes() {
         this.app.use( this.aduanaGPath, require('../routes/aduanasG'));
-        this.app.use( this.aduanaGPath, require('../routes/aduanasCR'));
+        this.app.use( this.aduanaCRPath, require('../routes/aduanasCR'));
     }
 
     listen() {
